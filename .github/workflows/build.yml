@@ -24,4 +24,4 @@ jobs:
           server: https://juliettevillars.com
           app: 'sveltekit-juliette'
           token: '${{ secrets.APP_TOKEN }}'
-          image: 'ghcr.io/V-Py/sveltekit-juliette:latest'
+          image: 'ghcr.io/v-py/sveltekit-juliette:latest'
