@@ -1,11 +1,15 @@
 <script>
-	import './styles.css';
+	import '../app.css';
+	import Footer from '$lib/components/Footer.svelte';
+    import Header from '$lib/components/Header.svelte';
 </script>
 
-<div class="app">
+<div class="app relative w-full bg-putty-50">
+	<Header />
 	<main>
 		<slot />
 	</main>
+	<Footer />
 </div>
 
 <style>
