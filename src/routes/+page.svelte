@@ -41,6 +41,34 @@
 				duration:1
 			})
 		}
+
+
+		let delSections = document.querySelectorAll(".delayed-section");
+
+		delSections.forEach(section => {
+			
+			let imageAnim = gsap.to(section.querySelector("img"), {
+				y: "-100vh",
+				ease: "none",
+				paused: true
+			});
+			
+			let progressTo = gsap.quickTo(imageAnim, "progress", {ease: "power3", duration: parseFloat(section.dataset.scrub) || 0.1});
+			
+			gsap.to(section.querySelector(".innerContainer"), {
+				y: "100vh",
+				ease: "none",
+				scrollTrigger: {
+				scrub: true,
+				trigger: section,
+				start: "top bottom",
+				end: "bottom top",
+				onUpdate: self => progressTo(self.progress)
+				}
+			});
+
+		});
+
 	});
 
 	function animateImages() {
@@ -75,50 +103,46 @@
 		</button>
 	</div>
 	<div id="second-section" class="h-screen w-full bg-[url('/img/jungle.jpeg')] second-section overflow-hidden" >
-		<div  class="grid grid-cols-3 gap-20 p-20 h-[850px] w-full relative">
+		<div  class="grid grid-cols-3 gap-20 p-20 h-[1000px] w-full relative">
 			<!-- <div class="overflow-hidden relative rounded-lg">
 				<img id="image_test_1" src="/img/carnet/png/20240419112115 32-1.png" alt="Juliette Villars " class="rounded-lg absolute" loading="lazy"/>
 			</div> -->
-			<div id="ara_rouge" class="overflow-hidden relative rounded-2xl shadow-[rgba(255,255,255,_0.4)_0px_0px_150px]">
+			<div id="ara_rouge" class="img-container overflow-hidden relative rounded-2xl shadow-[rgba(255,255,255,_0.4)_0px_0px_150px]">
 				<img  src="/img/carnet/png/20240419112115 33-1.png" alt="Juliette Villars" class="" loading="lazy"/>
+				<div>
+					
+				</div>
 			</div>
-			<div id="ara_vert" class="overflow-hidden relative rounded-2xl shadow-[rgba(255,255,255,_0.4)_0px_0px_150px]">
+			<div id="ara_vert" class="img-container overflow-hidden relative rounded-2xl shadow-[rgba(255,255,255,_0.4)_0px_0px_150px]">
 				<img  src="/img/carnet/png/20240419112115 34-1.png" alt="Juliette Villars" class="" loading="lazy"/>
 			</div>
-			<div id="motmot" class="overflow-hidden relative rounded-2xl shadow-[rgba(255,255,255,_0.4)_0px_0px_150px]">
+			<div id="motmot" class="img-container overflow-hidden relative rounded-2xl shadow-[rgba(255,255,255,_0.4)_0px_0px_150px]">
 				<img  src="/img/carnet/png/20240419112115 35-1.png" alt="Juliette Villars" class="" loading="lazy"/>
 			</div>
 		</div>
-<!-- 
-		<button on:click={scrollThirdSection} type="button" class="bg-putty-200 bounce hover:bg-putty-100 mt-auto mb-20 w-32 h-32 rounded-full border border-putty-800 flex justify-center items-center">
-			<i class="fas fa-arrow-down fa-2x"></i>
-		</button> -->
 	</div>
 
-	<div id="third-section" class="grid grid-cols-2 h-[1000px] w-full border-t border-2 border-putty-950  relative bg-putty-950">
-		<button type="button" class="bg-gray-200 mt-20 p-5 absolute top-0 left-0" on:click={animateImages}>Animate</button>
-
-		<div class="flex flex-col items-center text-sm py-10">
-			<h3 class="text-9xl text-putty-100">Costa Rica</h3>
-			<p class="max-w-md">
-			</p>	
-		</div>
-		<div class="w-full h-full grid-cols-2 justify-center grid gap-20 relative overflow-hidden py-8 px-4 bg-putty-950">
-			<div class="h-screen w-full relative overflow-hidden gradient" id="container">
-				{#each Array(10) as _, i}
-					{@const index_img = i+2}
-					<img id="image_{i}" src="/img/carnet/png/20240419112115 {index_img}-1.png" alt="Juliette Villars" class="image absolute w-[280px] z-10 h-[360px] object-cover rounded-xl right-0" style:top="{i*380}px" loading="lazy"/>
-				{/each}
-			</div>
-			<div class="h-screen w-full relative overflow-hidden gradient">
-				{#each Array(10) as _, i}
-					{@const index_img = i+12}
-
-					<img id="image_{i}" src="/img/carnet/png/20240419112115 {index_img}-1.png" alt="Juliette Villars" class="image absolute w-[280px] z-10 h-[360px] object-cover rounded-xl left-0" style:top="{i*380}px" loading="lazy"/>
-				{/each}
-			</div>
+	<div id="third-section" class="h-screen w-full bg-white second-section overflow-hidden" >
+		<div  class="grid grid-cols-3 p-20 h-[900px] w-full relative">
+			<div id="del1" class="delayed-section left-10" data-scrub="0.5">
+				<div class="innerContainer">
+				  <img src="/img/carnet/png/20240419112115 33-1.png" alt="">
+				</div>
+			  </div>
+			  <div id="del2" class="delayed-section top-20" data-scrub="0.2">
+				<div class="innerContainer ">
+				  <img src="/img/carnet/png/20240419112115 34-1.png" alt="">
+				</div>
+			  </div>
+			  <div id="del3" class="delayed-section top-10 right-10" data-scrub="1">
+				<div class="innerContainer">
+				  <img src="/img/carnet/png/20240419112115 35-1.png" alt="">
+				</div>
+			  </div>
+			  
 		</div>
 	</div>
+
 
 
 
@@ -127,6 +151,42 @@
 
 </main>
 <style>
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+.second-section .img-container {
+	animation: float 6s ease-in-out infinite;
+}
+
+.second-section .img-container:nth-child(2) {
+	animation-delay: 1s;
+}
+
+.second-section .img-container:nth-child(3) {
+	animation-delay: 2s;
+}
+
+.delayed-section {
+  position: relative;
+}
+
+/* .delayed-section .inner-container {
+  will-change: transform;
+}
+.delayed-section img {
+  max-width: 100%;
+  will-change: transform;
+} */
+
 	.box {
 		width: 100px;
 		height: 100px;
