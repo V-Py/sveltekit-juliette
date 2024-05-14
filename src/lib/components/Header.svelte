@@ -3,11 +3,11 @@
     import {page} from '$app/stores';
 </script>
 
-<nav class="relative top-0 left-0 w-full pt-4 pb-8 bg-putty-50 text-gray-900 ">
+<nav class="absolute z-0 top-0 left-0 w-full pt-4 pb-8 bg-transparent text-gray-900 ">
     <div class="flex flex-wrap items-center justify-between w-full p-4 px-20">
         <a href="/" class="flex flex-col">
-            <div class="tracking-wider font-bold text-xl text-putty-700">Juliette Villars</div>
-            <div class="hidden md:block text-putty-600 italic text-sm">Carnettiste - Illustratrice</div>
+            <h3 class="tracking-wider font-bold text-xl text-putty-700">Juliette Villars</h3>
+            <!-- <div class="hidden md:block text-putty-600 italic text-sm">Carnettiste - Illustratrice</div> -->
         </a>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-light flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-l md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
@@ -31,3 +31,8 @@
     </div>
   </nav>
   
+  <style>
+        h3 {
+            font-family: 'Hatolie', sans-serif;
+        }
+  </style>

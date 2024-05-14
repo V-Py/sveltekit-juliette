@@ -4,7 +4,7 @@
 
 
 
-<div class="w-full flex justify-center items-center h-3/4 px-80">
+<div class="w-full flex justify-center items-center h-3/4 px-80 py-20">
     <div class="w-full flex flex-col items-center gap-2 text-putty-800 text-xl">
         <img src="/img/juliette_1.jpg" alt="juliette" class="rounded-full object-cover w-44 h-44 mb-10" />
 

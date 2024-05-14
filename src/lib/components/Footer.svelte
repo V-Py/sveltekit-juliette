@@ -1,4 +1,4 @@
-<div class="absolute bottom-0 left-0 w-full min-h-28 bg-putty-800 text-white text-sm py-5 flex justify-between px-20">
+<div class="absolute bottom-0 left-0 w-full min-h-28 bg-transparent text-putty-800 text-sm py-5 flex justify-between px-20">
 
     <div class="flex gap-2 items-center">
         <div class="font-bold tracking-wider">CONTACT : </div>
