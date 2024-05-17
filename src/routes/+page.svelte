@@ -5,7 +5,6 @@
     import { onMount } from "svelte";
 
 	export let data;
-	let url = data.url;
 	let ids = ["image_test_1", "image_test_2", "image_test_3"];
     import ColorThief from 'colorthief';
     let colorThief:ColorThief;
@@ -147,7 +146,7 @@
 			src: "/img/carnet/png/20240419112115 9-1.png",
 			alt: "Juliette Villars",
 			top: 400,
-			left: 50,
+			left: 50, 
 			scale: 3,
 			topOffset: 110,
 			leftOffset: -100,
