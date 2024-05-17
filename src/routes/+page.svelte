@@ -6,8 +6,8 @@
 
 	export let data;
 	let ids = ["image_test_1", "image_test_2", "image_test_3"];
-    import ColorThief from 'colorthief';
-    let colorThief:ColorThief;
+    // import ColorThief from 'colorthief';
+    // let colorThief:ColorThief;
 
 	let images_scroll_infos = [{
 		id: "ara_rouge",
